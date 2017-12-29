@@ -28,6 +28,7 @@ public class PingPong : MonoBehaviour
     private BoxCollider2D boxColl2D;
     private Rigidbody2D rig2D;
     private PingPongInitData currentPingPongData;
+    private Racket currentRacket;
 
     private void Awake()
     {
@@ -40,9 +41,10 @@ public class PingPong : MonoBehaviour
         currentPingPongData = pingPongInitData;
 
         racketTrans = GameManager.Instance.RacketTrans;
+        currentRacket = racketTrans.GetComponent<Racket>();
         relativeDirection = transform.position - racketTrans.position;
 
-        currentDirection = new Vector3(Random.Range(-1f, 1f), Random.value, 0).normalized;
+        //currentDirection = new Vector3(Random.Range(-1f, 1f), Random.value, 0).normalized;
 
         pointLeft = new Vector3(-boxColl2D.bounds.extents.x, 0);
         pointRight = new Vector3(boxColl2D.bounds.extents.x, 0);
@@ -62,10 +64,12 @@ public class PingPong : MonoBehaviour
 
     private void Update()
     {
+        
         if (!currentPingPongData.isStarted && Input.GetKeyDown(KeyCode.Space))
             currentPingPongData.isStarted = true;
         if (!currentPingPongData.isStarted)
         {
+            currentDirection = (currentRacket.RealSpeed.normalized + Vector3.up).normalized;
             transform.position = racketTrans.position + relativeDirection;
             return;
         }
@@ -79,6 +83,14 @@ public class PingPong : MonoBehaviour
 
 
     }
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        ICanTakeDamage CanTakeDamage = coll.collider.GetComponent<ICanTakeDamage>();
+        if (CanTakeDamage != null) {
+            CanTakeDamage.TakeDamage(1, this.gameObject);
+        }
+    }
+
     private void DetecteRaycasts()
     {
         for (int i = 0; i < points.Length; i++)
@@ -102,6 +114,10 @@ public class PingPong : MonoBehaviour
         Debug.DrawLine(transform.position + pointRight, transform.position + pointRight + Vector3.right * 0.02f);
         Debug.DrawLine(transform.position + pointUp, transform.position + pointUp + Vector3.up * 0.02f);
         Debug.DrawLine(transform.position + pointDown, transform.position + pointDown + Vector3.down * 0.02f);
+    }
+
+    private void DetecteRaycasts2() {
+
     }
 
     public void DestroySelf()

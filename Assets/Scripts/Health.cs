@@ -6,11 +6,11 @@ public class Health : MonoBehaviour, ICanTakeDamage
 {
 
     [SerializeField]
-    private int InitialHealth;
+    private int InitialHealth = 1;
     
     [SerializeField]
     private UnityEvent destroyEvent;
-
+    public UnityEvent DestroyEvent { set { destroyEvent = value; } }
     public int CurrentHealth
     {
         get;
