@@ -73,23 +73,16 @@ public class PingPong : MonoBehaviour
             transform.position = racketTrans.position + relativeDirection;
             return;
         }
-        DetecteRaycasts();
+        DetecteRaycasts2();
     }
     private void FixedUpdate()
     {
         if (!currentPingPongData.isStarted)
             return;
         rig2D.velocity = currentDirection * currentPingPongData.speed;
-
-
+        
     }
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        ICanTakeDamage CanTakeDamage = coll.collider.GetComponent<ICanTakeDamage>();
-        if (CanTakeDamage != null) {
-            CanTakeDamage.TakeDamage(1, this.gameObject);
-        }
-    }
+
 
     private void DetecteRaycasts()
     {
@@ -117,6 +110,25 @@ public class PingPong : MonoBehaviour
     }
 
     private void DetecteRaycasts2() {
+        RaycastHit2D results = Physics2D.BoxCast(transform.position, boxColl2D.bounds.extents*2.5f, 0f, Vector2.zero, 0f, layerMask);
+        if (results.collider != null)
+        {
+            Vector3 fixDirection = Vector3.zero;
+            if (results.collider.GetComponent<Racket>())
+            {
+                fixDirection = results.collider.GetComponent<Racket>().RealSpeed.normalized * 0.5f;
+            }
+
+            currentDirection = (Vector3.Reflect(currentDirection, results.normal) + fixDirection).normalized;
+            
+            ICanTakeDamage CanTakeDamage = results.collider.GetComponent<ICanTakeDamage>();
+            if (CanTakeDamage != null)
+            {
+                CanTakeDamage.TakeDamage(1, this.gameObject);
+            }
+           
+        }
+
 
     }
 
@@ -130,5 +142,14 @@ public class PingPong : MonoBehaviour
     {
         //transform.position = pingPongInitData.initPosition;
         currentPingPongData = pingPongInitData;
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        boxColl2D = GetComponent<BoxCollider2D>();
+        Gizmos.DrawCube(transform.position, boxColl2D.bounds.extents * 2.5f);
+
     }
 }
