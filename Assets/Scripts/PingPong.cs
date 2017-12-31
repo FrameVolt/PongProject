@@ -142,6 +142,9 @@ public class PingPong : MonoBehaviour
     {
         //transform.position = pingPongInitData.initPosition;
         currentPingPongData = pingPongInitData;
+        transform.rotation = Quaternion.identity;
+        rig2D.velocity = Vector2.zero;
+        rig2D.angularVelocity = 0f;
     }
 
 

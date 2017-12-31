@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &28217429
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &64513667
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &67843824
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &155669793
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &191142149
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &336286000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &367700778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &387811459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &390215197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &522967832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,7 +1576,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522967832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.000061035156, z: 0}
+  m_LocalPosition: {x: 0.000015258789, y: 0.000015258789, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1235967492}
@@ -1689,7 +1699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &645317606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &667469676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &741054814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &765174213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,6 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &804461958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,7 +2264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &858893900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,6 +2378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &869000121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,6 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &921665712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,7 +2777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1231806193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,6 +2891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1235967491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,7 +2917,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1235967491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 265.40002, y: 640.32007, z: 0}
+  m_LocalPosition: {x: 135.1771, y: 228.48001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 191142152}
@@ -3180,6 +3200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1374419152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,6 +3313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1399707700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,7 +3397,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1399707700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 375, y: 667, z: 0}
+  m_LocalPosition: {x: 191, y: 238, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1308687811}
@@ -3512,7 +3534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1425546080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3624,7 +3647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1547817419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,7 +3760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1550456306
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,7 +3873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1691865845
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,12 +3886,12 @@ GameObject:
   - component: {fileID: 1691865847}
   - component: {fileID: 1691865846}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FallingPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1691865846
 ParticleSystemRenderer:
   serializedVersion: 4
@@ -3980,7 +4006,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -84637369
+  randomSeed: 1811430347
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7495,6 +7521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1892055108
 GameObject:
   m_ObjectHideFlags: 0
@@ -7943,6 +7970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1941791928
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,6 +8083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 1
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1972964168
 GameObject:
   m_ObjectHideFlags: 0
@@ -8166,7 +8195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &1983847087
 GameObject:
   m_ObjectHideFlags: 0
@@ -8377,7 +8407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
 --- !u!1 &2067795077
 GameObject:
   m_ObjectHideFlags: 0
@@ -8663,4 +8694,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4194a76b0bc84ba8aa02d7da51569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 1
+  InitialHealth: 2
+  finalColor: {r: 0.9686275, g: 0.7137255, b: 0, a: 1}
