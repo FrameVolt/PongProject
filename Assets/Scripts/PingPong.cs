@@ -126,10 +126,7 @@ public class PingPong : MonoBehaviour
             {
                 CanTakeDamage.TakeDamage(1, this.gameObject);
             }
-           
         }
-
-
     }
 
     public void DestroySelf()

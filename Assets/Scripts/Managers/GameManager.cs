@@ -23,8 +23,23 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
-    private void GameOver() {
+    private UIManager uiManager;
+
+    private void Start()
+    {
+        uiManager = UIManager.Instance;
+    }
+
+    public void GameOver() {
 
         print("GameOver!");
+        uiManager.GameOver();
+    }
+
+    public void GameWin()
+    {
+
+        print("GameWin!");
+        uiManager.GameWin();
     }
 }
