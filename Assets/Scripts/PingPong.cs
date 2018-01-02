@@ -4,21 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public struct PingPongInitData
-{
-    public Vector3 initPosition;
-    public float speed;
-    public bool isStarted;
-}
+
 
 public class PingPong : MonoBehaviour
 {
+    public enum State { Idle, Running }
+    [Serializable]
+    public struct PingPongInitData
+    {
+        public State state;
+        public Vector3 initPosition;
+        public float speed;
+    }
+
+
     [SerializeField]
     private PingPongInitData pingPongInitData;
     [SerializeField]
     private LayerMask layerMask;
-    
+    [SerializeField]
+    private TrailRenderer trail;
+
     private Transform racketTrans;
     private Vector3 pointLeft, pointRight, pointUp, pointDown;
     private Vector3[] points = new Vector3[4];
@@ -34,12 +40,13 @@ public class PingPong : MonoBehaviour
     {
         boxColl2D = GetComponent<BoxCollider2D>();
         rig2D = GetComponent<Rigidbody2D>();
+        trail = GetComponent<TrailRenderer>();
     }
 
     private void Start()
     {
         currentPingPongData = pingPongInitData;
-
+        trail.enabled = false;
         racketTrans = GameManager.Instance.RacketTrans;
         currentRacket = racketTrans.GetComponent<Racket>();
         relativeDirection = transform.position - racketTrans.position;
@@ -64,10 +71,13 @@ public class PingPong : MonoBehaviour
 
     private void Update()
     {
-        
-        if (!currentPingPongData.isStarted && Input.GetKeyDown(KeyCode.Space))
-            currentPingPongData.isStarted = true;
-        if (!currentPingPongData.isStarted)
+
+        if (currentPingPongData.state == State.Idle && Input.GetKeyDown(KeyCode.Space))
+        {
+            trail.enabled = true;
+            currentPingPongData.state = State.Running;
+        }
+        if (currentPingPongData.state == State.Idle)
         {
             currentDirection = (currentRacket.RealSpeed.normalized + Vector3.up).normalized;
             transform.position = racketTrans.position + relativeDirection;
@@ -77,10 +87,9 @@ public class PingPong : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!currentPingPongData.isStarted)
+        if (currentPingPongData.state == State.Idle)
             return;
         rig2D.velocity = currentDirection * currentPingPongData.speed;
-        
     }
 
 
@@ -138,6 +147,7 @@ public class PingPong : MonoBehaviour
     public void ResetPingPongData()
     {
         //transform.position = pingPongInitData.initPosition;
+        trail.enabled = false;
         currentPingPongData = pingPongInitData;
         transform.rotation = Quaternion.identity;
         rig2D.velocity = Vector2.zero;
