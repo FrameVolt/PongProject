@@ -7,6 +7,9 @@ public class GameManager : Singleton<GameManager> {
     private int life = 3;
     [SerializeField]
     private Transform racketTrans;
+    [SerializeField]
+    private LevelDirector currentDirector;
+    public LevelDirector CurrentDirector { get { return currentDirector; } }
     public Transform RacketTrans { get { return racketTrans; } }
 
     private int score;

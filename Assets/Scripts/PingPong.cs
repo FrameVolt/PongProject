@@ -35,6 +35,7 @@ public class PingPong : MonoBehaviour
     private Rigidbody2D rig2D;
     private PingPongInitData currentPingPongData;
     private Racket currentRacket;
+    private StateMachine<State> stateMachine;
 
     private void Awake()
     {
@@ -46,38 +47,23 @@ public class PingPong : MonoBehaviour
     private void Start()
     {
         currentPingPongData = pingPongInitData;
-        trail.enabled = false;
         racketTrans = GameManager.Instance.RacketTrans;
         currentRacket = racketTrans.GetComponent<Racket>();
         relativeDirection = transform.position - racketTrans.position;
-
-        //currentDirection = new Vector3(Random.Range(-1f, 1f), Random.value, 0).normalized;
-
-        pointLeft = new Vector3(-boxColl2D.bounds.extents.x, 0);
-        pointRight = new Vector3(boxColl2D.bounds.extents.x, 0);
-        pointUp = new Vector3(0, boxColl2D.bounds.extents.y);
-        pointDown = new Vector3(0, -boxColl2D.bounds.extents.y);
-
-        points[0] = pointLeft;
-        points[1] = pointRight;
-        points[2] = pointUp;
-        points[3] = pointDown;
-
-        rayDirection[0] = Vector2.left;
-        rayDirection[1] = Vector2.right;
-        rayDirection[2] = Vector2.up;
-        rayDirection[3] = Vector2.down;
+    
+        stateMachine = new StateMachine<State>();
+        stateMachine.AddState(State.Idle, () => { trail.enabled = false; });
+        stateMachine.AddState(State.Running, () => { trail.enabled = true; });
+        stateMachine.CurrentState = pingPongInitData.state;
     }
 
     private void Update()
     {
-
-        if (currentPingPongData.state == State.Idle && Input.GetKeyDown(KeyCode.Space))
+        if (stateMachine.CurrentState == State.Idle && Input.GetKeyDown(KeyCode.Space))
         {
-            trail.enabled = true;
-            currentPingPongData.state = State.Running;
+            stateMachine.CurrentState = State.Running;
         }
-        if (currentPingPongData.state == State.Idle)
+        if (stateMachine.CurrentState == State.Idle)
         {
             currentDirection = (currentRacket.RealSpeed.normalized + Vector3.up).normalized;
             transform.position = racketTrans.position + relativeDirection;
@@ -87,35 +73,9 @@ public class PingPong : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (currentPingPongData.state == State.Idle)
+        if (stateMachine.CurrentState == State.Idle)
             return;
         rig2D.velocity = currentDirection * currentPingPongData.speed;
-    }
-
-
-    private void DetecteRaycasts()
-    {
-        for (int i = 0; i < points.Length; i++)
-        {
-            RaycastHit2D results = Physics2D.Raycast(transform.position + points[i], rayDirection[i], 0.02f, layerMask);
-            if (results.collider != null)
-            {
-                Vector3 fixDirection = Vector3.zero;
-                if (results.collider.GetComponent<Racket>())
-                {
-                    fixDirection = results.collider.GetComponent<Racket>().RealSpeed.normalized * 0.5f;
-                }
-                
-                currentDirection = (Vector3.Reflect(currentDirection, results.normal) + fixDirection).normalized;
-                
-                break;
-            }
-        }
-
-        Debug.DrawLine(transform.position + pointLeft, transform.position + pointLeft + Vector3.left * 0.02f);
-        Debug.DrawLine(transform.position + pointRight, transform.position + pointRight + Vector3.right * 0.02f);
-        Debug.DrawLine(transform.position + pointUp, transform.position + pointUp + Vector3.up * 0.02f);
-        Debug.DrawLine(transform.position + pointDown, transform.position + pointDown + Vector3.down * 0.02f);
     }
 
     private void DetecteRaycasts2() {
@@ -146,12 +106,11 @@ public class PingPong : MonoBehaviour
 
     public void ResetPingPongData()
     {
-        //transform.position = pingPongInitData.initPosition;
-        trail.enabled = false;
         currentPingPongData = pingPongInitData;
         transform.rotation = Quaternion.identity;
         rig2D.velocity = Vector2.zero;
         rig2D.angularVelocity = 0f;
+        stateMachine.CurrentState = pingPongInitData.state;
     }
 
 
