@@ -21,7 +21,7 @@ public class BlockerControl : MonoBehaviour {
             if (transform.GetChild(i).gameObject.activeSelf)
                 blockAmount++;
         }
-        print(blockAmount);
+       
     }
 	
 	private void WinThisRound () {

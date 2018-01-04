@@ -11,21 +11,29 @@ public class DotLine : MonoBehaviour {
 
     private SpriteRenderer _renderer;
     private BoxCollider2D boxColl2D;
+    private IEnumerator setDotLineYield;
 
-	private void Awake () {
+    private void Awake () {
         _renderer = GetComponent<SpriteRenderer>();
         boxColl2D = GetComponent<BoxCollider2D>();
     }
 	
-	private void SetDotLine (bool isDotLine) {
+	private void DoSetDotLine (bool isDotLine) {
         _renderer.sprite = isDotLine ? sprite1 : sprite2;
         boxColl2D.enabled = isDotLine ? false : true;
     }
 
-    public IEnumerator SetDotLine() {
-        SetDotLine(false);
+    public void SetDotLine() {
+        if(setDotLineYield != null)
+        StopCoroutine(SetDotLineYield());
 
+        setDotLineYield = SetDotLineYield();
+        StartCoroutine(setDotLineYield);
+    }
+
+    private IEnumerator SetDotLineYield() {
+        DoSetDotLine(false);
         yield return new WaitForSeconds(5);
-        SetDotLine(true);
+        DoSetDotLine(true);
     }
 }

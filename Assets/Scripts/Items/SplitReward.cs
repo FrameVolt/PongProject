@@ -10,6 +10,7 @@ public class SplitReward : SpawnReward
         if (coll.CompareTag("Player"))
         {
             myColl.enabled = false;
+            Destroy(this.gameObject);
             print("SplitReward");
         }
     }

@@ -9,8 +9,8 @@ public class BlockReward : SpawnReward
         if (coll.CompareTag("Player"))
         {
             myColl.enabled = false;
-            print("BlockReward");
-            StartCoroutine(GameManager.Instance.CurrentDirector.DotLine.SetDotLine());
+            GameManager.Instance.CurrentDirector.DotLine.SetDotLine();
+            Destroy(this.gameObject);
         }
     }
 }
