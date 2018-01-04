@@ -8,7 +8,7 @@ public class GiveDamageToPlayer : MonoBehaviour {
 
     public virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player") && collider.GetComponent<ICanTakeDamage>() != null) {
+        if (collider.CompareTag("PingPong") && collider.GetComponent<ICanTakeDamage>() != null) {
             collider.GetComponent<ICanTakeDamage>().TakeDamage(DamageToGive, this.gameObject);
         }
     }

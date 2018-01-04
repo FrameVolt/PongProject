@@ -25,7 +25,7 @@ public class DotLine : MonoBehaviour {
 
     public void SetDotLine() {
         if(setDotLineYield != null)
-        StopCoroutine(SetDotLineYield());
+        StopCoroutine(setDotLineYield);
 
         setDotLineYield = SetDotLineYield();
         StartCoroutine(setDotLineYield);

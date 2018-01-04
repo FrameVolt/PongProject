@@ -7,7 +7,7 @@ public class SplitReward : SpawnReward
    
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Player"))
+        if (coll.CompareTag("PingPong"))
         {
             myColl.enabled = false;
             Destroy(this.gameObject);

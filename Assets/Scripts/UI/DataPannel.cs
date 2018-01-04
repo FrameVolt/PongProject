@@ -16,5 +16,6 @@ public class DataPannel : MonoBehaviour {
     private void Update()
     {
         life.text = gm.Life.ToString();
+        score.text = gm.Score.ToString();
     }
 }
