@@ -3,15 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
+
+    enum PlayerCount { One, Two}
+
     [SerializeField]
     private int life = 3;
-    [SerializeField]
     private Transform racketTrans;
+    private Racket racket;
     [SerializeField]
-    private LevelDirector currentDirector;
-    public LevelDirector CurrentDirector { get { return currentDirector; } }
-    public Transform RacketTrans { get { return racketTrans; } }
+    private LevelDirector director1;
+    [SerializeField]
+    private LevelDirector director2;
 
+    private LevelDirector currentDirector;
+    [SerializeField]
+    private PlayerCount currentPlayerCount;
+
+
+    public LevelDirector CurrentDirector { get { return currentDirector; } }
+    public Transform RacketTrans {
+        get { return racketTrans; }
+        set { racketTrans = value; }
+    }
+    public Racket Racket
+    {
+        get { return racket; }
+        set {
+            racket = value;
+            racketTrans = racket.transform;
+        }
+    }
     private int score;
     public int Score {
         get { return score; }
@@ -31,6 +52,18 @@ public class GameManager : Singleton<GameManager> {
     private void Start()
     {
         uiManager = UIManager.Instance;
+
+        StartGame();
+    }
+
+
+    public void StartGame() {
+        if (currentPlayerCount == PlayerCount.One)
+            currentDirector = director1;
+        else
+            currentDirector = director2;
+
+        currentDirector.Decorate();
     }
 
     public void GameOver() {

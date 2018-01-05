@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelDirector : MonoBehaviour {
+public abstract class LevelDirector : MonoBehaviour {
     [SerializeField]
     private RewardSpawner rewardSpawner;
     [SerializeField]
     private DotLine dotLine;
+    [SerializeField]
+    protected Racket racketPerfab;
+
+    private Racket initRacket;
+    public Racket InitRacket { get { return initRacket; } }
+
     public DotLine DotLine { get { return dotLine; } }
     private void Start () {
 		
 	}
-	
-	
-	private void Update () {
-		
-	}
+
+
+    public abstract void Decorate();
 }

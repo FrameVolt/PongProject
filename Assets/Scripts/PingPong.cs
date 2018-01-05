@@ -16,8 +16,7 @@ public class PingPong : MonoBehaviour
         public Vector3 initPosition;
         public float speed;
     }
-
-
+    
     [SerializeField]
     private PingPongInitData pingPongInitData;
     [SerializeField]
@@ -25,7 +24,7 @@ public class PingPong : MonoBehaviour
     [SerializeField]
     private TrailRenderer trail;
 
-    private Transform racketTrans;
+    private Transform initRacketTrans;
     private Vector3 pointLeft, pointRight, pointUp, pointDown;
     private Vector3[] points = new Vector3[4];
     private Vector2[] rayDirection = new Vector2[4];
@@ -47,9 +46,9 @@ public class PingPong : MonoBehaviour
     private void Start()
     {
         currentPingPongData = pingPongInitData;
-        racketTrans = GameManager.Instance.RacketTrans;
-        currentRacket = racketTrans.GetComponent<Racket>();
-        relativeDirection = transform.position - racketTrans.position;
+        initRacketTrans = GameManager.Instance.CurrentDirector.InitRacket.transform;
+        currentRacket = initRacketTrans.GetComponent<Racket>();
+        relativeDirection = transform.position - initRacketTrans.position;
     
         stateMachine = new StateMachine<State>();
         stateMachine.AddState(State.Idle, () => { trail.enabled = false; });
@@ -66,7 +65,7 @@ public class PingPong : MonoBehaviour
         if (stateMachine.CurrentState == State.Idle)
         {
             currentDirection = (currentRacket.RealSpeed.normalized + Vector3.up).normalized;
-            transform.position = racketTrans.position + relativeDirection;
+            transform.position = initRacketTrans.position + relativeDirection;
             return;
         }
         DetecteRaycasts2();
