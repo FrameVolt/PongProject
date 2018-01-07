@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private int life = 3;
     private Transform racketTrans;
-    private Racket racket;
+    //private Racket racket;
     [SerializeField]
     private LevelDirector director1;
     [SerializeField]
@@ -25,14 +25,14 @@ public class GameManager : Singleton<GameManager> {
         get { return racketTrans; }
         set { racketTrans = value; }
     }
-    public Racket Racket
-    {
-        get { return racket; }
-        set {
-            racket = value;
-            racketTrans = racket.transform;
-        }
-    }
+    //public Racket Racket
+    //{
+    //    get { return racket; }
+    //    set {
+    //        racket = value;
+    //        racketTrans = racket.transform;
+    //    }
+    //}
     private int score;
     public int Score {
         get { return score; }
@@ -64,6 +64,7 @@ public class GameManager : Singleton<GameManager> {
             currentDirector = director2;
 
         currentDirector.Decorate();
+        EventService.Instance.GetEvent<GameStartEvent>().Publish();
     }
 
     public void GameOver() {

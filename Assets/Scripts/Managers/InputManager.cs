@@ -17,9 +17,14 @@ public class InputManager : Singleton<InputManager> {
 
     private float lastX;
 
-
+    protected override void Awake()
+    {
+        base.Awake();
+        EventService.Instance.GetEvent<GameStartEvent>().Subscribe(GameStart);
+    }
     private void GameStart() {
-        
+        racketUp = GameManager.Instance.CurrentDirector.UpRacket;
+        racketDown = GameManager.Instance.CurrentDirector.DownRacket;
     }
 
 	private void Update () {
