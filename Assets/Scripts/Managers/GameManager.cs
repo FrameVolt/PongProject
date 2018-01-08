@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager> {
 
     [SerializeField]
     private int life = 3;
-    private Transform racketTrans;
+    //private Transform racketTrans;
     //private Racket racket;
     [SerializeField]
     private LevelDirector director1;
@@ -21,17 +21,9 @@ public class GameManager : Singleton<GameManager> {
 
 
     public LevelDirector CurrentDirector { get { return currentDirector; } }
-    public Transform RacketTrans {
-        get { return racketTrans; }
-        set { racketTrans = value; }
-    }
-    //public Racket Racket
-    //{
-    //    get { return racket; }
-    //    set {
-    //        racket = value;
-    //        racketTrans = racket.transform;
-    //    }
+    //public Transform RacketTrans {
+    //    get { return racketTrans; }
+    //    set { racketTrans = value; }
     //}
     private int score;
     public int Score {

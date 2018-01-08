@@ -9,20 +9,22 @@ public abstract class LevelDirector : MonoBehaviour {
     private DotLine dotLine;
     [SerializeField]
     protected Racket racketPerfab;
+    [SerializeField]
+    protected PingPong pongPerfab;
+
 
     protected Racket downRacket;
     protected Racket upRacket;
     public Racket DownRacket { get { return downRacket; } }
     public Racket UpRacket { get { return upRacket; } }
 
-    private Racket initRacket;
+    protected Racket initRacket;
     public Racket InitRacket { get { return initRacket; } }
 
     public DotLine DotLine { get { return dotLine; } }
     private void Start () {
 		
 	}
-
-
+    
     public abstract void Decorate();
 }

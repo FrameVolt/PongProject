@@ -10,5 +10,7 @@ public class LevelDirector1 : LevelDirector
     public override void Decorate()
     {
         downRacket = Instantiate(racketPerfab, DownRackotPos, Quaternion.identity);
+        initRacket = downRacket;
+        Instantiate(pongPerfab, DownRackotPos + new Vector3(0, 0.3f, 0), Quaternion.identity);
     }
 }
