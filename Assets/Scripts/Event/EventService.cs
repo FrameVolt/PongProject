@@ -12,7 +12,9 @@ public class EventService
 
     public static EventService Instance
     {
-        get { return _instance; }
+        get {
+            return _instance;
+        }
     }
 
     private EventService()

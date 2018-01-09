@@ -21,9 +21,21 @@ public class Racket : MonoBehaviour {
     private Vector3 lastPosition;
     private Vector3 currentVelocity;
 
+    private PingPong myPong;
+    public PingPong MyPong {
+        get { return myPong; }
+        set { myPong = value; }
+    }
+
+    private Coroutine launchCoroutine;
+
     private void Awake () {
         boxColl2D = GetComponent<BoxCollider2D>();
-        
+
+        if (launchCoroutine != null) {
+            StopCoroutine(launchCoroutine);
+        }
+        launchCoroutine = StartCoroutine(Launch());
     }
     private void Start()
     {
@@ -70,4 +82,12 @@ public class Racket : MonoBehaviour {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y, transform.position.z);
     }
 
+    public IEnumerator Launch() {
+
+        yield return new WaitForSeconds(3f);
+        if (MyPong != null)
+        {
+            MyPong.Run();
+        }
+    }
 }

@@ -58,10 +58,6 @@ public class PingPong : MonoBehaviour
 
     private void Update()
     {
-        if (stateMachine.CurrentState == State.Idle && Input.GetKeyDown(KeyCode.Space))
-        {
-            stateMachine.CurrentState = State.Running;
-        }
         if (stateMachine.CurrentState == State.Idle)
         {
             currentDirection = (currentRacket.RealSpeed.normalized + Vector3.up).normalized;
@@ -70,6 +66,11 @@ public class PingPong : MonoBehaviour
         }
         DetecteRaycasts2();
     }
+
+    public void Run() {
+        stateMachine.CurrentState = State.Running;
+    }
+
     private void FixedUpdate()
     {
         if (stateMachine.CurrentState == State.Idle)

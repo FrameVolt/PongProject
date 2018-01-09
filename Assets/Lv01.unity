@@ -3508,8 +3508,6 @@ MonoBehaviour:
     y: -4
     width: 5
     height: 2
-  racketUp: {fileID: 0}
-  racketDown: {fileID: 0}
 --- !u!1 &1308687810
 GameObject:
   m_ObjectHideFlags: 0

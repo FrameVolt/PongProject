@@ -7,13 +7,13 @@ public class InputManager : Singleton<InputManager> {
     
     [SerializeField]
     private Rect rectUp,rectDown;
-    [SerializeField]
     private Racket racketUp;
-    [SerializeField]
     private Racket racketDown;
-
     public Racket RacketUp { get { return racketUp; } set { racketUp = value; } }
     public Racket RacketDown { get { return racketDown; } set { racketDown = value; } }
+
+    private int upRectTouchCount;
+    private int downRectTouchCount;
 
     private float lastX;
 

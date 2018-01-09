@@ -14,10 +14,10 @@ public class LevelDirector2 : LevelDirector
         Vector3 pongPos;
         if (Random.value > 0.5f) {
             pongPos = DownRackotPos + new Vector3(0,0.3f,0);
-            initRacket = upRacket;
+            initRacket = downRacket;
         } else {
             pongPos = upRackotPos - new Vector3(0, 0.3f, 0);
-            initRacket = downRacket;
+            initRacket = upRacket;
         }
         
         Instantiate(pongPerfab, pongPos, Quaternion.identity);
