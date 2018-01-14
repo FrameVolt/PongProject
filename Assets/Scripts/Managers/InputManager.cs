@@ -30,6 +30,8 @@ public class InputManager : Singleton<InputManager> {
 	private void Update () {
         foreach (Touch touch in Input.touches)
         {
+
+
             if (racketUp && rectUp.Contains(Camera.main.ScreenToWorldPoint(touch.position)))
             {
                 if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)

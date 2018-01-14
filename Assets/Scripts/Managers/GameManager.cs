@@ -44,18 +44,17 @@ public class GameManager : Singleton<GameManager> {
     private void Start()
     {
         uiManager = UIManager.Instance;
-
-        StartGame();
+        StartCoroutine(StartGame());
     }
 
 
-    public void StartGame() {
+    public IEnumerator StartGame() {
         if (currentPlayerCount == PlayerCount.One)
             currentDirector = director1;
         else
             currentDirector = director2;
-
         currentDirector.Decorate();
+        yield return new WaitForSeconds(3f);
         EventService.Instance.GetEvent<GameStartEvent>().Publish();
     }
 
