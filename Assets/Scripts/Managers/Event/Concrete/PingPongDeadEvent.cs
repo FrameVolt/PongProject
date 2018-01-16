@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeadEvent : EventBase<PlayerDeadEvent>
+public class PingPongDeadEvent : EventBase<PingPongDeadEvent>
 {
 
 }

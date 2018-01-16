@@ -15,7 +15,10 @@ public class DataPannel : MonoBehaviour {
     }
     private void Update()
     {
-        life.text = gm.Life.ToString();
-        score.text = gm.Score.ToString();
+        if (GameManager.Instance.CurrentPlayerCount == GameManager.PlayerCount.One)
+        {
+            //life.text = gm.Life.ToString();
+            //score.text = gm.Score.ToString();
+        }
     }
 }

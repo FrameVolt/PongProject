@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
 
-    enum PlayerCount { One, Two }
+    public enum PlayerCount { One, Two }
 
-    [SerializeField]
-    private int life = 3;
+    //[SerializeField]
+    //private int life = 3;
     [SerializeField]
     private LevelDirector director1;
     [SerializeField]
@@ -18,25 +18,26 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private PlayerCount currentPlayerCount;
 
+    public PlayerCount CurrentPlayerCount { get { return currentPlayerCount; } }
 
     public LevelDirector CurrentDirector { get { return currentDirector; } }
 
-    private int score;
-    public int Score
-    {
-        get { return score; }
-        set { score = value; }
-    }
-    public int Life
-    {
-        get { return life; }
-        set
-        {
-            life = value;
-            if (life <= 0)
-                GameOver();
-        }
-    }
+    //private int score;
+    //public int Score
+    //{
+    //    get { return score; }
+    //    set { score = value; }
+    //}
+    //public int Life
+    //{
+    //    get { return life; }
+    //    set
+    //    {
+    //        life = value;
+    //        if (life <= 0)
+    //            GameOver();
+    //    }
+    //}
 
     private bool gameActived;
 
@@ -96,10 +97,10 @@ public class GameManager : Singleton<GameManager>
     {
         EventService.Instance.GetEvent<PlayerRunEvent>().Publish();
     }
-    public void PlayerDeadEvent()
+    public void PingPongDeadEvent()
     {
         PlayerActived = false;
-        EventService.Instance.GetEvent<PlayerDeadEvent>().Publish();
+        EventService.Instance.GetEvent<PingPongDeadEvent>().Publish();
     }
     public void PlayerReGoEvent()
     {

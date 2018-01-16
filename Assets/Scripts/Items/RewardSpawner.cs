@@ -11,7 +11,7 @@ public class RewardSpawner : MonoBehaviour {
 
     private void Start() {
         EventService.Instance.GetEvent<PlayerRunEvent>().Subscribe(StartSpawn);
-        EventService.Instance.GetEvent<PlayerDeadEvent>().Subscribe(CancelSpawn);
+        EventService.Instance.GetEvent<PingPongDeadEvent>().Subscribe(CancelSpawn);
     }
     private void StartSpawn() {
         InvokeRepeating("Spawn", 0f, repeatRate);

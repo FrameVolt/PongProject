@@ -48,12 +48,10 @@ public struct PlayerMomeryData
 
 public class DataManager : Singleton<DataManager>
 {
-
     
-    [SerializeField]
-    private PlayerMomeryData playerMomeryDataA;
-    [SerializeField]
-    private PlayerMomeryData playerMomeryDataB;
+    public PlayerMomeryData playerMomeryDataA;
+
+    public PlayerMomeryData playerMomeryDataB;
     
     private void Start()
     {

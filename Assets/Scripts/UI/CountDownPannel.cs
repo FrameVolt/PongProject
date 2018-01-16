@@ -14,7 +14,7 @@ public class CountDownPannel : MonoBehaviour {
         text = GetComponent<Text>();
         text.enabled = false;
         EventService.Instance.GetEvent<PlayerRegoEvent>().Subscribe(ReGoCount);
-        EventService.Instance.GetEvent<PlayerDeadEvent>().Subscribe(PlayerDead);
+        EventService.Instance.GetEvent<PingPongDeadEvent>().Subscribe(PingPongDead);
     }
 
 
@@ -22,7 +22,7 @@ public class CountDownPannel : MonoBehaviour {
     {
         StartCoroutine(DoStartCount());
     }
-    private void PlayerDead() {
+    private void PingPongDead() {
         text.enabled = true;
         transform.localScale = Vector3.one;
         text.DOFade(1, 0f);

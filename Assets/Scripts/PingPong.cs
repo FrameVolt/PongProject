@@ -101,9 +101,13 @@ public class PingPong : MonoBehaviour
 
     public void DestroySelf()
     {
-        GameManager.Instance.Life -= 1;
+        //GameManager.Instance.Life -= 1;
+        if(transform.position.y < 0)
+            DataManager.Instance.playerMomeryDataA.Life--;
+        else if(GameManager.Instance.CurrentPlayerCount == GameManager.PlayerCount.Two)
+            DataManager.Instance.playerMomeryDataB.Life--;
         ResetPingPongData();
-        GameManager.Instance.PlayerDeadEvent();
+        GameManager.Instance.PingPongDeadEvent();
     }
 
     public void ResetPingPongData()

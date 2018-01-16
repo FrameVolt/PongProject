@@ -36,7 +36,7 @@ public class Blocker : MonoBehaviour, ICanTakeDamage
 
     private IEnumerator DestroySelf()
     {
-        GameManager.Instance.Score += 1;
+        //GameManager.Instance.Score += 1;
         rend.enabled = false;
         yield return null;
         Destroy(this.gameObject);
