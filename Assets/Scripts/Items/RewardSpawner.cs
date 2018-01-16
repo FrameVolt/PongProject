@@ -8,13 +8,17 @@ public class RewardSpawner : MonoBehaviour {
     private float repeatRate = 5f;
     [SerializeField]
     private SpawnReward[] spawnReward;
-   
 
-    private void Start () {
-        InvokeRepeating("Spawn", 0f, repeatRate);
-        
+    private void Start() {
+        EventService.Instance.GetEvent<PlayerRunEvent>().Subscribe(StartSpawn);
+        EventService.Instance.GetEvent<PlayerDeadEvent>().Subscribe(CancelSpawn);
     }
-	
+    private void StartSpawn() {
+        InvokeRepeating("Spawn", 0f, repeatRate);
+    }
+    private void CancelSpawn() {
+        CancelInvoke("Spawn");
+    }
 	
 	private void Spawn () {
         int index = Random.Range(0, spawnReward.Length);

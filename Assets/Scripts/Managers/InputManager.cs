@@ -20,9 +20,9 @@ public class InputManager : Singleton<InputManager> {
     protected override void Awake()
     {
         base.Awake();
-        EventService.Instance.GetEvent<GameStartEvent>().Subscribe(GameStart);
+        EventService.Instance.GetEvent<PlayerCtrlActiveEvent>().Subscribe(PlayerCtrlActive);
     }
-    private void GameStart() {
+    private void PlayerCtrlActive() {
         racketUp = GameManager.Instance.CurrentDirector.UpRacket;
         racketDown = GameManager.Instance.CurrentDirector.DownRacket;
     }
@@ -30,6 +30,14 @@ public class InputManager : Singleton<InputManager> {
 	private void Update () {
         foreach (Touch touch in Input.touches)
         {
+            if (!GameManager.Instance.GameActived && touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+            {
+                GameManager.Instance.GameActiveEvent();
+            }
+            if (GameManager.Instance.GameActived && !GameManager.Instance.PlayerActived && touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+            {
+                GameManager.Instance.PlayerReGoEvent();
+            }
 
 
             if (racketUp && rectUp.Contains(Camera.main.ScreenToWorldPoint(touch.position)))

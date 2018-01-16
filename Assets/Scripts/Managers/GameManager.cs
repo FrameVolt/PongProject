@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager> {
+public class GameManager : Singleton<GameManager>
+{
 
-    enum PlayerCount { One, Two}
+    enum PlayerCount { One, Two }
 
     [SerializeField]
     private int life = 3;
-    //private Transform racketTrans;
-    //private Racket racket;
     [SerializeField]
     private LevelDirector director1;
     [SerializeField]
@@ -21,22 +20,38 @@ public class GameManager : Singleton<GameManager> {
 
 
     public LevelDirector CurrentDirector { get { return currentDirector; } }
-    //public Transform RacketTrans {
-    //    get { return racketTrans; }
-    //    set { racketTrans = value; }
-    //}
+
     private int score;
-    public int Score {
+    public int Score
+    {
         get { return score; }
         set { score = value; }
     }
-	public int Life {
+    public int Life
+    {
         get { return life; }
-        set {
+        set
+        {
             life = value;
             if (life <= 0)
                 GameOver();
         }
+    }
+
+    private bool gameActived;
+
+    public bool GameActived
+    {
+        get { return gameActived; }
+        private set { gameActived = value; }
+    }
+
+    private bool playerActived;
+
+    public bool PlayerActived
+    {
+        get { return playerActived; }
+        private set { playerActived = value; }
     }
 
     private UIManager uiManager;
@@ -44,30 +59,51 @@ public class GameManager : Singleton<GameManager> {
     private void Start()
     {
         uiManager = UIManager.Instance;
-        StartCoroutine(StartGame());
     }
-
-
-    public IEnumerator StartGame() {
+    private void ActiveGame()
+    {
+        gameActived = true;
+        PlayerActived = true;
         if (currentPlayerCount == PlayerCount.One)
             currentDirector = director1;
         else
             currentDirector = director2;
         currentDirector.Decorate();
-        yield return new WaitForSeconds(3f);
-        EventService.Instance.GetEvent<GameStartEvent>().Publish();
+
+        PlayerCtrlActiveEvent();
     }
 
-    public void GameOver() {
-
-        print("GameOver!");
+    public void GameOver()
+    {
         uiManager.GameOver();
     }
 
     public void GameWin()
     {
-
-        print("GameWin!");
         uiManager.GameWin();
+    }
+    public void GameActiveEvent()
+    {
+        EventService.Instance.GetEvent<GameActiveEvent>().Publish();
+        ActiveGame();
+    }
+    
+    private void PlayerCtrlActiveEvent()
+    {
+        EventService.Instance.GetEvent<PlayerCtrlActiveEvent>().Publish();
+    }
+    public void PlayerRunEvent()
+    {
+        EventService.Instance.GetEvent<PlayerRunEvent>().Publish();
+    }
+    public void PlayerDeadEvent()
+    {
+        PlayerActived = false;
+        EventService.Instance.GetEvent<PlayerDeadEvent>().Publish();
+    }
+    public void PlayerReGoEvent()
+    {
+        PlayerActived = true;
+        EventService.Instance.GetEvent<PlayerRegoEvent>().Publish();
     }
 }

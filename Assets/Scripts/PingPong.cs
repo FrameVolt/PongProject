@@ -41,6 +41,7 @@ public class PingPong : MonoBehaviour
         boxColl2D = GetComponent<BoxCollider2D>();
         rig2D = GetComponent<Rigidbody2D>();
         trail = GetComponent<TrailRenderer>();
+        EventService.Instance.GetEvent<PlayerRunEvent>().Subscribe(Run);
     }
 
     private void Start()
@@ -102,6 +103,7 @@ public class PingPong : MonoBehaviour
     {
         GameManager.Instance.Life -= 1;
         ResetPingPongData();
+        GameManager.Instance.PlayerDeadEvent();
     }
 
     public void ResetPingPongData()
