@@ -28,32 +28,63 @@ public class InputManager : Singleton<InputManager> {
     }
 
 	private void Update () {
-        foreach (Touch touch in Input.touches)
+        if (AppConst.platform == AppConst.Platform.Android)
         {
-            if (!GameManager.Instance.GameActived && touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+            foreach (Touch touch in Input.touches)
+            {
+                if (!GameManager.Instance.GameActived && touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                {
+                    GameManager.Instance.GameActiveEvent();
+                }
+                if (GameManager.Instance.GameActived && !GameManager.Instance.PlayerActived && touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                {
+                    GameManager.Instance.PlayerReGoEvent();
+                }
+
+
+                if (racketUp && rectUp.Contains(Camera.main.ScreenToWorldPoint(touch.position)))
+                {
+                    if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                    {
+                        racketUp.Follow(Camera.main.ScreenToWorldPoint(touch.position));
+                    }
+                }
+                else if (racketDown && rectDown.Contains(Camera.main.ScreenToWorldPoint(touch.position)))
+                {
+                    if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                    {
+                        racketDown.Follow(Camera.main.ScreenToWorldPoint(touch.position));
+                    }
+                }
+            }
+        }else if(AppConst.platform == AppConst.Platform.Editor)
+        {
+            
+            if (!GameManager.Instance.GameActived && Input.GetMouseButtonDown(0))
             {
                 GameManager.Instance.GameActiveEvent();
             }
-            if (GameManager.Instance.GameActived && !GameManager.Instance.PlayerActived && touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+            if (GameManager.Instance.GameActived && !GameManager.Instance.PlayerActived && Input.GetMouseButtonDown(0))
             {
                 GameManager.Instance.PlayerReGoEvent();
             }
 
 
-            if (racketUp && rectUp.Contains(Camera.main.ScreenToWorldPoint(touch.position)))
+            if (racketUp && rectUp.Contains(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
             {
-                if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                if (Input.GetMouseButton(0))
                 {
-                    racketUp.Follow(Camera.main.ScreenToWorldPoint(touch.position));
+                    racketUp.Follow(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 }
             }
-            else if (racketDown && rectDown.Contains(Camera.main.ScreenToWorldPoint(touch.position)))
+            else if (racketDown && rectDown.Contains(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
             {
-                if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                if (Input.GetMouseButton(0))
                 {
-                    racketDown.Follow(Camera.main.ScreenToWorldPoint(touch.position));
+                    racketDown.Follow(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 }
             }
+            
         }
     }
 

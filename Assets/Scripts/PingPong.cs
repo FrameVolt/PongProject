@@ -61,11 +61,10 @@ public class PingPong : MonoBehaviour
     {
         if (stateMachine.CurrentState == State.Idle)
         {
-            currentDirection = (currentRacket.RealSpeed.normalized + Vector3.up).normalized;
             transform.position = initRacketTrans.position + relativeDirection;
             return;
         }
-        DetecteRaycasts2();
+        DetecteRaycasts();
     }
 
     public void Run() {
@@ -75,11 +74,15 @@ public class PingPong : MonoBehaviour
     private void FixedUpdate()
     {
         if (stateMachine.CurrentState == State.Idle)
+        {
+            Vector3 c = currentRacket.RealSpeed / currentRacket.Speed;
+            currentDirection = (c + Vector3.up).normalized;
             return;
+        }
         rig2D.velocity = currentDirection * currentPingPongData.speed;
     }
 
-    private void DetecteRaycasts2() {
+    private void DetecteRaycasts() {
         RaycastHit2D results = Physics2D.BoxCast(transform.position, boxColl2D.bounds.extents*2.5f, 0f, Vector2.zero, 0f, layerMask);
         if (results.collider != null)
         {

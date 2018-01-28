@@ -13,7 +13,7 @@ public class Racket : MonoBehaviour {
     private float smoothTime = 0.5f;
 
     public Vector3 RealSpeed { get; private set; }
-
+    public float Speed { get { return speed; }}
     private Vector3 pointLeft;
     private Vector3 pointRight;
     private float directionX;
@@ -43,12 +43,7 @@ public class Racket : MonoBehaviour {
         pointRight = new Vector3(boxColl2D.bounds.extents.x + 0.01f, 0);
         lastPosition = transform.position;
     }
-    #if UNITY_STANDALONE || UNITY_EDITOR
-    private void Update()
-    {
-        Move(Input.GetAxisRaw("Horizontal"));
-    }
-    #endif
+    
     private void Move(float _directionX)
     {
         RaycastHit2D resultsLeft = Physics2D.Raycast(transform.position + pointLeft, Vector2.left, 0.01f);
