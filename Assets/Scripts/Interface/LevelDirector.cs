@@ -22,6 +22,8 @@ public abstract class LevelDirector : MonoBehaviour {
     public Racket InitRacket { get { return initRacket; } }
 
     public DotLine DotLine { get { return dotLine; } }
+    public Vector3 PongRelativePos { get; protected set; }
+
     private void Start () {
 		
 	}

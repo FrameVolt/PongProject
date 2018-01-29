@@ -49,7 +49,7 @@ public class PingPong : MonoBehaviour
         currentPingPongData = pingPongInitData;
         initRacketTrans = GameManager.Instance.CurrentDirector.InitRacket.transform;
         currentRacket = initRacketTrans.GetComponent<Racket>();
-        relativeDirection = transform.position - initRacketTrans.position;
+        relativeDirection = GameManager.Instance.CurrentDirector.PongRelativePos;
     
         stateMachine = new StateMachine<State>();
         stateMachine.AddState(State.Idle, () => { trail.enabled = false; });
@@ -61,6 +61,7 @@ public class PingPong : MonoBehaviour
     {
         if (stateMachine.CurrentState == State.Idle)
         {
+           
             transform.position = initRacketTrans.position + relativeDirection;
             return;
         }
@@ -69,14 +70,14 @@ public class PingPong : MonoBehaviour
 
     public void Run() {
         stateMachine.CurrentState = State.Running;
+
+        currentDirection = (currentRacket.RealSpeed/10 + Vector3.up).normalized;
     }
 
     private void FixedUpdate()
     {
         if (stateMachine.CurrentState == State.Idle)
         {
-            Vector3 c = currentRacket.RealSpeed / currentRacket.Speed;
-            currentDirection = (c + Vector3.up).normalized;
             return;
         }
         rig2D.velocity = currentDirection * currentPingPongData.speed;

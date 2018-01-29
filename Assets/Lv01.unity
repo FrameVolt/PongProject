@@ -1543,7 +1543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3687025d48697aa46a0f4f82c84a8923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 3
   director1: {fileID: 1787561027}
   director2: {fileID: 505708532}
   currentPlayerCount: 0
@@ -1571,12 +1570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9db6a3b3ae3f345930865e3155e7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPlayerData: {fileID: 0}
-  initPlayerMomeryData:
-    playerdata: {fileID: 0}
-    life: 3
-    score: 0
-    pongSpeed: 0
   playerMomeryDataA:
     playerdata: {fileID: 11400000, guid: f735e13af22f6d44cb85a7bab4a6e488, type: 2}
     life: 0

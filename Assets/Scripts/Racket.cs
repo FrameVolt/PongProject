@@ -10,7 +10,7 @@ public class Racket : MonoBehaviour {
     [SerializeField]
     private float maxX = 1.656f;
     [SerializeField]
-    private float smoothTime = 0.5f;
+    private float smoothTime = 1f;
 
     public Vector3 RealSpeed { get; private set; }
     public float Speed { get { return speed; }}
@@ -46,6 +46,7 @@ public class Racket : MonoBehaviour {
     
     private void Move(float _directionX)
     {
+        
         RaycastHit2D resultsLeft = Physics2D.Raycast(transform.position + pointLeft, Vector2.left, 0.01f);
         RaycastHit2D resultsRight = Physics2D.Raycast(transform.position + pointRight, Vector2.right, 0.01f);
         directionX = _directionX;
